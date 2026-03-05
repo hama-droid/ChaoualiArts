@@ -23,6 +23,7 @@ export default function Navbar() {
             <NavLink href="/gallery" label="Gallery" />
             <NavLink href="/about" label="About" />
             <NavLink href="/contact" label="Contact" />
+            <NavLink href="/shop" label="Shop" />
           </nav>
         </div>
       </Container>
