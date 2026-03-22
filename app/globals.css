@@ -1,15 +1,5 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-:root {
-  --ring: 0 0% 0%;
-}
-
-html, body {
-  height: 100%;
-}
-
-* {
-  -webkit-tap-highlight-color: transparent;
-}
+/* Optional global tweaks */
+html, body { height: 100%; }
+* { -webkit-tap-highlight-color: transparent; }

@@ -2,12 +2,14 @@ import Container from "@/components/Container";
 import PrimaryButton from "@/components/PrimaryButton";
 import ArtworkCard from "@/components/ArtworkCard";
 import { ARTWORKS } from "@/content/artworks";
+import EmailPopup from "@/components/EmailPopup";
 
 export default function Home() {
   const featured = ARTWORKS.slice(0, 3);
 
   return (
     <main>
+      <EmailPopup />
       <section className="py-16 md:py-24">
         <Container>
           <div className="grid gap-10 md:grid-cols-12 md:items-end">
