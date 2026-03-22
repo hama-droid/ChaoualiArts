@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState, useEffect } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 
 const NAV = [
@@ -10,14 +10,18 @@ const NAV = [
   { href: "/connect", label: "CONNECT" },
 ];
 
+const SHOP_QUICK = [
+  { href: "/shop/limited-editions", label: "LIMITED EDITIONS" },
+  { href: "/shop/originals", label: "ORIGINALS" },
+  { href: "/shop/sculptures", label: "SCULPTURES" },
+];
+
 export default function Header() {
   const pathname = usePathname();
   const router = useRouter();
-
   const [q, setQ] = useState("");
   const [lang, setLang] = useState("en");
 
-  // persist UI language (real translations later)
   useEffect(() => {
     const saved = localStorage.getItem("chaouali_lang");
     if (saved) setLang(saved);
@@ -40,20 +44,17 @@ export default function Header() {
       <div className="mx-auto max-w-7xl px-5">
         {/* Row 1 */}
         <div className="flex h-16 items-center justify-between gap-4">
-          {/* Left: Shop now */}
           <Link
             href="/shop"
-            className="hidden sm:inline-flex items-center gap-2 border border-white px-4 py-2 text-xs font-bold tracking-widest hover:bg-white hover:text-black transition"
+            className="hidden sm:inline-flex items-center gap-2 border border-white px-4 py-2 text-xs font-bold tracking-[0.22em] hover:bg-white hover:text-black transition"
           >
             SHOP NOW <span aria-hidden>›</span>
           </Link>
 
-          {/* Center logo */}
-          <Link href="/" className="text-xl md:text-2xl font-extrabold tracking-widest">
-            CHAOUALI ARTS
+          <Link href="/" className="text-xl md:text-2xl font-extrabold tracking-[0.22em]">
+            CHAOUALIARTS
           </Link>
 
-          {/* Right: search + language */}
           <div className="hidden md:flex items-center gap-3">
             <form onSubmit={onSearch} className="flex items-center gap-2">
               <input
@@ -62,11 +63,7 @@ export default function Header() {
                 placeholder="Enter your search"
                 className="w-56 bg-black text-white border border-white/40 px-3 py-2 text-xs outline-none focus:border-white"
               />
-              <button
-                type="submit"
-                className="border border-white/40 px-3 py-2 text-xs hover:border-white transition"
-                aria-label="Search"
-              >
+              <button type="submit" className="border border-white/40 px-3 py-2 text-xs hover:border-white">
                 🔍
               </button>
             </form>
@@ -75,7 +72,6 @@ export default function Header() {
               value={lang}
               onChange={(e) => setLang(e.target.value)}
               className="bg-black border border-white/40 px-3 py-2 text-xs outline-none"
-              aria-label="Language"
             >
               <option value="en">🇺🇸 English</option>
               <option value="fr">🇫🇷 Français</option>
@@ -84,25 +80,37 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Row 2: nav like Britto */}
+        {/* Row 2 */}
         <nav className="hidden md:flex items-center justify-center gap-10 pb-3">
           {NAV.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className={`text-xs font-bold tracking-widest ${
+              className={`text-xs font-bold tracking-[0.22em] ${
                 active(item.href) ? "text-white" : "text-white/75 hover:text-white"
               }`}
             >
               {item.label}
             </Link>
           ))}
+
+          <div className="ml-6 flex items-center gap-6 border-l border-white/15 pl-6">
+            {SHOP_QUICK.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="text-xs font-semibold tracking-[0.18em] text-white/70 hover:text-white"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </div>
         </nav>
 
         {/* Mobile */}
         <div className="md:hidden pb-4 space-y-3">
           <div className="flex flex-wrap gap-2">
-            <Link href="/shop" className="border border-white px-3 py-2 text-xs font-bold tracking-widest">
+            <Link href="/shop" className="border border-white px-3 py-2 text-xs font-bold tracking-[0.22em]">
               SHOP NOW ›
             </Link>
             {NAV.map((item) => (
