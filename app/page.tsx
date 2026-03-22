@@ -4,6 +4,7 @@ import PrimaryButton from "@/components/PrimaryButton";
 import ArtworkCard from "@/components/ArtworkCard";
 import { ARTWORKS } from "@/content/artworks";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Home() {
   const featured = ARTWORKS.slice(0, 3);
@@ -13,119 +14,121 @@ export default function Home() {
     <main>
       <EmailPopup />
 
-      {/* HERO: big artwork like brand sites */}
-      <section className="bg-black text-white">
-        <div className="mx-auto max-w-7xl px-5 py-10 md:py-14">
-          <div className="grid gap-8 md:grid-cols-12 md:items-center">
-            <div className="md:col-span-6">
-              <p className="text-xs font-semibold tracking-[0.22em] text-white/70">
-                CONTEMPORARY • COLOR • CRAFT
-              </p>
+      {/* HERO */}
+      <section className="relative bg-black text-white">
+        <div className="absolute inset-0 opacity-35">
+          {hero?.coverImage && (
+            <Image
+              src={hero.coverImage}
+              alt=""
+              fill
+              className="object-cover"
+              priority
+            />
+          )}
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/55 to-black/85" />
 
-              <h1 className="mt-4 text-4xl md:text-6xl font-semibold tracking-tight">
-                Chaouali Arts
-              </h1>
+        <div className="relative mx-auto max-w-7xl px-5 py-16 md:py-24">
+          <p className="text-xs font-semibold tracking-[0.22em] text-white/70">
+            CHAOUALI ARTS
+          </p>
 
-              <p className="mt-4 text-white/80 max-w-xl leading-relaxed">
-                Originals, limited editions, sculptures & ceramics — built with bold
-                composition and clean finishing.
-              </p>
+          <h1 className="mt-4 text-4xl md:text-6xl font-semibold tracking-tight max-w-3xl">
+            Contemporary color-driven work—built to feel alive on the wall.
+          </h1>
 
-              <div className="mt-7 flex flex-wrap gap-3">
-                <Link
-                  href="/shop"
-                  className="inline-flex items-center justify-center border border-white px-5 py-3 text-sm font-semibold tracking-wide hover:bg-white hover:text-black transition"
-                >
-                  Shop Now →
-                </Link>
-                <Link
-                  href="/gallery"
-                  className="inline-flex items-center justify-center border border-white/40 px-5 py-3 text-sm font-medium text-white hover:border-white transition"
-                >
-                  View Gallery
-                </Link>
-              </div>
-            </div>
+          <p className="mt-5 text-white/80 max-w-2xl leading-relaxed">
+            Limited editions, originals (private acquisition), and sculptures/ceramics.
+            Worldwide shipping. Certificate of authenticity available.
+          </p>
 
-            <div className="md:col-span-6">
-              {/* Simple hero showcase using your first artwork title */}
-              <div className="rounded-3xl border border-white/15 bg-white/5 p-6">
-                <p className="text-xs font-semibold tracking-[0.22em] text-white/70">
-                  FEATURED WORK
-                </p>
-                <p className="mt-2 text-2xl font-semibold">{hero?.title}</p>
-                <p className="mt-2 text-sm text-white/70">
-                  {hero?.medium} · {hero?.size}
-                </p>
-                <Link
-                  href={`/work/${hero?.slug}`}
-                  className="mt-5 inline-flex items-center justify-center border border-white px-4 py-2 text-xs font-bold tracking-[0.22em] hover:bg-white hover:text-black transition"
-                >
-                  VIEW →
-                </Link>
-              </div>
-            </div>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <PrimaryButton href="/shop">Shop Now</PrimaryButton>
+            <PrimaryButton href="/gallery" variant="outline">
+              View Gallery
+            </PrimaryButton>
+            <PrimaryButton href="/contact" variant="outline">
+              Commission / Inquiry
+            </PrimaryButton>
           </div>
+
+          {hero && (
+            <div className="mt-10 inline-flex items-center gap-3 rounded-full border border-white/25 bg-white/10 px-4 py-2 text-sm text-white/90">
+              <span className="text-white/70">Featured:</span>
+              <Link href={`/work/${hero.slug}`} className="underline hover:text-white">
+                {hero.title} →
+              </Link>
+            </div>
+          )}
         </div>
       </section>
 
-      {/* Shop category strip like Britto entry points */}
+      {/* Shop category tiles */}
       <section className="py-10 border-b border-neutral-200">
         <Container>
           <div className="grid gap-4 md:grid-cols-3">
             <Link
               href="/shop/limited-editions"
-              className="rounded-2xl border border-neutral-200 p-6 hover:border-neutral-400 transition"
+              className="rounded-3xl border border-neutral-200 p-7 shadow-sm hover:shadow-md hover:border-neutral-300 transition"
             >
-              <p className="text-xs font-semibold tracking-[0.22em] text-neutral-600">CHAOUALI SHOP</p>
+              <p className="text-xs font-semibold tracking-[0.22em] text-neutral-500">
+                CHAOUALI SHOP
+              </p>
               <h2 className="mt-2 text-xl font-semibold">Limited Editions</h2>
-              <p className="mt-2 text-sm text-neutral-600">Signed / numbered editions.</p>
+              <p className="mt-2 text-sm text-neutral-600">
+                Signed / numbered releases.
+              </p>
             </Link>
 
             <Link
               href="/shop/originals"
-              className="rounded-2xl border border-neutral-200 p-6 hover:border-neutral-400 transition"
+              className="rounded-3xl border border-neutral-200 p-7 shadow-sm hover:shadow-md hover:border-neutral-300 transition"
             >
-              <p className="text-xs font-semibold tracking-[0.22em] text-neutral-600">COLLECTORS</p>
+              <p className="text-xs font-semibold tracking-[0.22em] text-neutral-500">
+                COLLECTORS
+              </p>
               <h2 className="mt-2 text-xl font-semibold">Originals</h2>
-              <p className="mt-2 text-sm text-neutral-600">Private acquisition (no public prices).</p>
+              <p className="mt-2 text-sm text-neutral-600">
+                Private acquisition—contact to buy.
+              </p>
             </Link>
 
             <Link
               href="/shop/sculptures"
-              className="rounded-2xl border border-neutral-200 p-6 hover:border-neutral-400 transition"
+              className="rounded-3xl border border-neutral-200 p-7 shadow-sm hover:shadow-md hover:border-neutral-300 transition"
             >
-              <p className="text-xs font-semibold tracking-[0.22em] text-neutral-600">OBJECTS</p>
+              <p className="text-xs font-semibold tracking-[0.22em] text-neutral-500">
+                OBJECTS
+              </p>
               <h2 className="mt-2 text-xl font-semibold">Sculptures & Ceramics</h2>
-              <p className="mt-2 text-sm text-neutral-600">Handmade sculptural work.</p>
+              <p className="mt-2 text-sm text-neutral-600">
+                Handmade sculptural work.
+              </p>
             </Link>
           </div>
         </Container>
       </section>
 
       {/* Featured works */}
-      <section className="py-10">
+      <section className="py-12">
         <Container>
           <div className="flex items-end justify-between gap-6">
             <div>
               <h2 className="text-2xl font-semibold tracking-tight">Featured works</h2>
               <p className="mt-2 text-neutral-600">
-                Curated selection — explore the full body of work in the gallery.
+                Curated selection—explore the full gallery.
               </p>
             </div>
-            <a className="text-sm underline" href="/gallery">
+            <Link className="text-sm underline" href="/gallery">
               View all
-            </a>
+            </Link>
           </div>
 
           <div className="mt-8 grid gap-5 md:grid-cols-3">
             {featured.map((art) => (
               <ArtworkCard key={art.slug} art={art} />
             ))}
-          </div>
-
-          <div className="mt-10">
-            <PrimaryButton href="/contact">Commission / Inquiry</PrimaryButton>
           </div>
         </Container>
       </section>

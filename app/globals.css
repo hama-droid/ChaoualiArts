@@ -1,7 +1,19 @@
 @import "tailwindcss";
 
-/* Global polish */
-html, body { height: 100%; }
+/* ---- Design system ---- */
+:root{
+  --bg: #ffffff;
+  --fg: #0a0a0a;
+  --muted: #6b7280; /* gray-500 */
+}
+
+html, body { height: 100%; background: var(--bg); color: var(--fg); }
 * { -webkit-tap-highlight-color: transparent; }
 
-:root { color-scheme: light; }
+a { text-decoration-thickness: 1px; text-underline-offset: 3px; }
+
+/* Nice selection */
+::selection { background: #111; color: #fff; }
+
+/* Smooth images */
+img { image-rendering: auto; }
