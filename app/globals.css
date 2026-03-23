@@ -1,19 +1,18 @@
 @import "tailwindcss";
 
-/* ---- Design system ---- */
+/* Pop-art design tokens */
 :root{
-  --bg: #ffffff;
-  --fg: #0a0a0a;
-  --muted: #6b7280; /* gray-500 */
+  --ink:#0b0b0f;
+  --paper:#ffffff;
+  --accent1:#ff2ea6; /* magenta */
+  --accent2:#00d4ff; /* cyan */
+  --accent3:#ffd400; /* yellow */
+  --accent4:#7c3aed; /* purple */
 }
 
-html, body { height: 100%; background: var(--bg); color: var(--fg); }
+html, body { height: 100%; background: var(--paper); color: var(--ink); }
 * { -webkit-tap-highlight-color: transparent; }
 
-a { text-decoration-thickness: 1px; text-underline-offset: 3px; }
+::selection { background: var(--ink); color: white; }
 
-/* Nice selection */
-::selection { background: #111; color: #fff; }
-
-/* Smooth images */
-img { image-rendering: auto; }
+a { text-underline-offset: 3px; text-decoration-thickness: 1px; }

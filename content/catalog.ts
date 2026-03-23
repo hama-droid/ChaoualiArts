@@ -29,25 +29,25 @@ export type Product = {
 // ✅ EDIT ONLY THESE ARRAYS
 export const CATEGORIES: Category[] = [
   {
-    slug: "prints",
-    name: "Prints",
-    description: "Open editions and limited editions.",
-    coverImage: "/placeholders/category-prints.jpg",
+    slug: "limited-editions",
+    name: "Limited Editions",
+    description: "Signed / numbered editions.",
+    coverImage: "/placeholders/category-limited.jpg",
     shippingFlat: { USD: 25, EUR: 25, GBP: 20 },
   },
   {
-    slug: "ceramics",
-    name: "Ceramics",
-    description: "Handmade functional & decorative pieces.",
-    coverImage: "/placeholders/category-ceramics.jpg",
-    shippingFlat: { USD: 40, EUR: 40, GBP: 35 },
+    slug: "originals",
+    name: "Originals",
+    description: "Private acquisition (contact to buy).",
+    coverImage: "/placeholders/category-originals.jpg",
+    shippingFlat: { USD: 90, EUR: 90, GBP: 80 },
   },
   {
-    slug: "paintings",
-    name: "Paintings",
-    description: "Original works and one-of-ones.",
-    coverImage: "/placeholders/category-paintings.jpg",
-    shippingFlat: { USD: 90, EUR: 90, GBP: 80 },
+    slug: "sculptures",
+    name: "Sculptures & Ceramics",
+    description: "Handmade sculptural work.",
+    coverImage: "/placeholders/category-sculptures.jpg",
+    shippingFlat: { USD: 40, EUR: 40, GBP: 35 },
   },
 ];
 
